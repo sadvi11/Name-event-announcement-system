@@ -14,6 +14,28 @@ Manual email takes hours. This system delivers in seconds.
 - Lambda publishes to SNS topic
 - All subscribers receive email instantly
 
+- ## Architecture
+
+```mermaid
+flowchart TD
+    A[User fills HTML form] --> B[S3 Static Website]
+    B --> C[API Gateway POST /announce]
+    C --> D[Lambda Function Python]
+    D --> E[SNS Topic EventAnnouncements]
+    E --> F[Email Subscriber 1]
+    E --> G[Email Subscriber 2]
+    E --> H[All Subscribers instantly]
+
+    style A fill:#4A90D9,color:#fff
+    style B fill:#FF9900,color:#fff
+    style C fill:#FF9900,color:#fff
+    style D fill:#FF9900,color:#fff
+    style E fill:#FF6B6B,color:#fff
+    style F fill:#2ECC71,color:#fff
+    style G fill:#2ECC71,color:#fff
+    style H fill:#2ECC71,color:#fff
+```
+
 ## Tech Stack
 
 - AWS SNS pub/sub notifications
