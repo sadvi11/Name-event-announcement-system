@@ -1,6 +1,6 @@
 # Event Announcement System
 
-Serverless event notification system built with AWS SNS, Lambda, API Gateway and S3.
+Serverless event notification system built with AWS SNS Lambda API Gateway and S3.
 Send announcements to thousands of subscribers instantly with zero infrastructure management.
 
 ## Architecture
@@ -29,7 +29,7 @@ flowchart TD
 
 RBC needs to notify 15 million customers of a fraud alert instantly.
 Manual email chain takes hours. This system delivers to all subscribers in seconds.
-Used by Canadian banks, telecoms, and government for critical notifications.
+Same architecture used by Canadian banks telecoms and government agencies.
 
 ## What It Does
 
@@ -37,45 +37,36 @@ Used by Canadian banks, telecoms, and government for critical notifications.
 - API Gateway receives POST request and triggers Lambda
 - Lambda publishes to SNS topic
 - All subscribers receive email notification instantly
-- End-to-end delivery in under 2 seconds
+- End to end delivery under 2 seconds
 
 ## Tech Stack
 
 | Service | Purpose |
 |---|---|
-| AWS S3 | Static frontend hosting |
-| AWS API Gateway | REST API endpoint |
-| AWS Lambda | Serverless business logic |
 | AWS SNS | Pub/sub notification delivery |
+| AWS Lambda | Serverless Python function |
+| AWS API Gateway | REST endpoint |
+| AWS S3 | Static frontend hosting |
 | Python 3.11 | Lambda runtime |
 | ca-central-1 | Canadian data residency |
 
 ## Screenshots
 
-### API Test — Status 200
+### API Test Success - Status 200
 ![API Test](screenshots/api-test-success.png)
 
 ### Email Notification Received
 ![Email](screenshots/email-notification-received.png)
 
-### Lambda Deployed in Canada
+### Lambda Deployed in Canada Central
 ![Lambda](screenshots/lambda-config.png)
-
-## Setup
-
-```bash
-git clone https://github.com/sadvi11/Event-announcement-system
-cd Event-announcement-system
-```
-
-Deploy using AWS Console or CLI following deploy.sh steps.
 
 ## Test
 
 ```bash
 curl -X POST YOUR_API_GATEWAY_URL/announce \
   -H "Content-Type: application/json" \
-  -d '{"title": "Event Name", "message": "Event details here", "email": "your@email.com"}'
+  -d '{"title": "Event Name", "message": "Event details", "email": "your@email.com"}'
 ```
 
 Expected response:
@@ -86,17 +77,17 @@ Expected response:
 ## Nokia Connection
 
 At Nokia I worked with pub/sub messaging for 5G network alarm notifications.
-When a network node had a fault, it published to a message bus.
+When a network node had a fault it published to a message bus.
 Every subscribed system received the alert simultaneously.
 
-AWS SNS is the exact same pattern:
+AWS SNS is the exact same pattern.
 Nokia pub/sub = AWS SNS
 Network alarms = Event announcements
-Network subscribers = Email subscribers
+I already understood this architecture. I just needed to learn the AWS names.
 
 ## Author
 
 Sadhvi Sharma | Cloud Engineer and AI Engineer | Nokia 5G and AWS
 AWS Solutions Architect Associate certified
-Permanent Resident — available anywhere in Canada immediately
+Permanent Resident available anywhere in Canada immediately
 github.com/sadvi11 | linkedin.com/in/sadhvi-sharma-5789a6249
